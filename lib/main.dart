@@ -171,6 +171,10 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
         height: mediaQuery * 0.3,
         child: Chart(_recentTransactions),
       ),
+      Container(
+        height: mediaQuery * 0.7,
+        child: transactionListWidget,
+      ),
     ];
   }
 

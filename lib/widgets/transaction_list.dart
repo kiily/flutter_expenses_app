@@ -33,55 +33,66 @@ class TransactionList extends StatelessWidget {
               );
             },
           )
-        : ListView.builder(
-            itemBuilder: (ctx, index) {
-              return TransactionItem(
-                transaction: userTransactions[index],
-                deleteTx: deleteTx,
-              );
-              // return Card(
-              //   child: Row(children: <Widget>[
-              //     Container(
-              //       padding: EdgeInsets.all(10),
-              //       margin: EdgeInsets.symmetric(
-              //         vertical: 10,
-              //         horizontal: 15,
-              //       ),
-              //       decoration: BoxDecoration(
-              //         border: Border.all(
-              //           color: Theme.of(context).primaryColor,
-              //           width: 2,
-              //         ),
-              //       ),
-              //       child: Text(
-              //         '\$${userTransactions[index].amount.toStringAsFixed(2)}',
-              //         style: TextStyle(
-              //           fontWeight: FontWeight.bold,
-              //           fontSize: 20,
-              //           color: Theme.of(context).primaryColor,
-              //         ),
-              //       ),
-              //     ),
-              //     Column(
-              //       crossAxisAlignment: CrossAxisAlignment.start,
-              //       children: <Widget>[
-              //         Text(
-              //           userTransactions[index].title,
-              //           style: Theme.of(context).textTheme.headline5,
-              //         ),
-              //         Text(
-              //           DateFormat.yMMMd()
-              //               .format(userTransactions[index].date),
-              //           style: TextStyle(
-              //             color: Colors.grey,
-              //           ),
-              //         )
-              //       ],
-              //     ),
-              //   ]),
-              // );
-            },
-            itemCount: userTransactions.length,
+        : ListView(
+            children: userTransactions
+                .map(
+                  (tx) => TransactionItem(
+                    key: ValueKey(tx.id),
+                    transaction: tx,
+                    deleteTx: deleteTx,
+                  ),
+                )
+                .toList(),
           );
+    // : ListView.builder(
+    //     itemBuilder: (ctx, index) {
+    //       return TransactionItem(
+    //         transaction: userTransactions[index],
+    //         deleteTx: deleteTx,
+    //       );
+    //       // return Card(
+    //       //   child: Row(children: <Widget>[
+    //       //     Container(
+    //       //       padding: EdgeInsets.all(10),
+    //       //       margin: EdgeInsets.symmetric(
+    //       //         vertical: 10,
+    //       //         horizontal: 15,
+    //       //       ),
+    //       //       decoration: BoxDecoration(
+    //       //         border: Border.all(
+    //       //           color: Theme.of(context).primaryColor,
+    //       //           width: 2,
+    //       //         ),
+    //       //       ),
+    //       //       child: Text(
+    //       //         '\$${userTransactions[index].amount.toStringAsFixed(2)}',
+    //       //         style: TextStyle(
+    //       //           fontWeight: FontWeight.bold,
+    //       //           fontSize: 20,
+    //       //           color: Theme.of(context).primaryColor,
+    //       //         ),
+    //       //       ),
+    //       //     ),
+    //       //     Column(
+    //       //       crossAxisAlignment: CrossAxisAlignment.start,
+    //       //       children: <Widget>[
+    //       //         Text(
+    //       //           userTransactions[index].title,
+    //       //           style: Theme.of(context).textTheme.headline5,
+    //       //         ),
+    //       //         Text(
+    //       //           DateFormat.yMMMd()
+    //       //               .format(userTransactions[index].date),
+    //       //           style: TextStyle(
+    //       //             color: Colors.grey,
+    //       //           ),
+    //       //         )
+    //       //       ],
+    //       //     ),
+    //       //   ]),
+    //       // );
+    //     },
+    //     itemCount: userTransactions.length,
+    //   );
   }
 }
